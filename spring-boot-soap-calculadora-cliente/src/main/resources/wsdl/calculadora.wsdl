@@ -1,0 +1,71 @@
+<wsdl:definitions
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:sch="http://www.nexos.com/spring/soap/api/calculadora"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.nexos.com/spring/soap/api/calculadora"
+	targetNamespace="http://www.nexos.com/spring/soap/api/calculadora">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema"
+			elementFormDefault="qualified"
+			targetNamespace="http://www.nexos.com/spring/soap/api/calculadora">
+			<element name="CalculadoraRequest">
+				<complexType>
+					<sequence>
+						<element name="operacion" type="string" />
+						<element name="n1" type="decimal" />
+						<element name="n2" type="decimal" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="CalculadoraResponse">
+				<complexType>
+					<sequence>
+						<element name="estado" type="boolean" />
+						<element name="resultado" type="decimal" />
+						<element name="mensaje" type="string" />
+					</sequence>
+				</complexType>
+			</element>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="CalculadoraRequest">
+		<wsdl:part element="tns:CalculadoraRequest"
+			name="CalculadoraRequest">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="CalculadoraResponse">
+		<wsdl:part element="tns:CalculadoraResponse"
+			name="CalculadoraResponse">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="CalculadoraResultado">
+		<wsdl:operation name="Calculadora">
+			<wsdl:input message="tns:CalculadoraRequest"
+				name="CalculadoraRequest">
+			</wsdl:input>
+			<wsdl:output message="tns:CalculadoraResponse"
+				name="CalculadoraResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CalculadoraResultadoSoap11"
+		type="tns:CalculadoraResultado">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Calculadora">
+			<soap:operation soapAction="" />
+			<wsdl:input name="CalculadoraRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CalculadoraResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CalculadoraResultadoService">
+		<wsdl:port binding="tns:CalculadoraResultadoSoap11"
+			name="CalculadoraResultadoSoap11">
+			<soap:address location="http://localhost:8080/ws" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

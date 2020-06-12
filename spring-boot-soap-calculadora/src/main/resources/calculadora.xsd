@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.nexos.com/spring/soap/api/calculadora"
+	xmlns:tns="http://www.nexos.com/spring/soap/api/calculadora"
+	elementFormDefault="qualified">
+	
+	<element name="CalculadoraRequest">
+		<complexType>
+			<sequence>
+				<element name="operacion" type="string" />
+				<element name="n1" type="decimal" />
+				<element name="n2" type="decimal" />
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="CalculadoraResponse">
+		<complexType>
+			<sequence>
+				<element name="estado" type="boolean" />
+				<element name="resultado" type="decimal" />
+				<element name="mensaje" type="string" />
+			</sequence>
+		</complexType>
+	</element>	
+	
+</schema>
