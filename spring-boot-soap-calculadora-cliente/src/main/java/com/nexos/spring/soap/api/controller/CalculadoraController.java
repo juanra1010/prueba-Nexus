@@ -38,7 +38,7 @@ public class CalculadoraController {
 	
 	//---formulas---//
 	
-	@GetMapping("formula/triangulo/{base}/{altura}")
+	@GetMapping("formula/area-triangulo/{base}/{altura}")
 	public String areaTriangulo(@PathVariable("base") BigDecimal base,
 							 	@PathVariable("altura") BigDecimal altura) {
 		logger.info("Solicitud --> AREA TRIANGULO");
@@ -47,7 +47,7 @@ public class CalculadoraController {
 	}
 	
 	
-	@GetMapping("/formula/circulo/{radio}")
+	@GetMapping("/formula/area-circulo/{radio}")
 	public String AreaCirculo(@PathVariable("radio") BigDecimal radio) {
 		
 		logger.info("Solicitud --> AREA CIRCULO");
@@ -64,7 +64,7 @@ public class CalculadoraController {
 		return service.calcularPromedio(n1, n2);
 	}
 	
-	@GetMapping("/formula/pendiente/{x1}/{y1}/{x2}/{y2}")
+	@GetMapping("/formula/pendiente-de-recta/{x1}/{y1}/{x2}/{y2}")
 	public String pendiente(@PathVariable("x1") BigDecimal x1,
 							   @PathVariable("y1") BigDecimal y1,
 							   @PathVariable("x2") BigDecimal x2,
